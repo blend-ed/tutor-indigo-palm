@@ -13,7 +13,7 @@ def load_readme():
 def load_about():
     about = {}
     with io.open(
-        os.path.join(HERE, "tutorindigo", "__about__.py"),
+        os.path.join(HERE, "tutorbl", "__about__.py"),
         "rt",
         encoding="utf-8",
     ) as f:
@@ -25,11 +25,11 @@ ABOUT = load_about()
 
 
 setup(
-    name="tutor-indigo",
+    name="tutor-bl",
     version=ABOUT["__version__"],
-    url="https://github.com/overhangio/tutor-indigo",
+    url="https://github.com/blend-ed/tutor-indigo-palm",
     project_urls={
-        "Documentation": "https://docs.tutor.overhang.io/",
+        "Documentation": "https://docs.tutor.edly.io/",
         "Code": "https://github.com/overhangio/tutor-indigo",
         "Issue tracker": "https://github.com/overhangio/tutor-indigo/issues",
         "Community": "https://discuss.openedx.org",
@@ -37,15 +37,15 @@ setup(
     license="AGPLv3",
     author="Overhang.IO",
     author_email="contact@overhang.io",
-    maintainer="Overhang.IO",
-    maintainer_email="regis@overhang.io",
+    maintainer="Blend-ed",
+    maintainer_email="zameel@blend-ed.com-",
     description="Indigo theme plugin for Tutor",
     long_description=load_readme(),
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     python_requires=">=3.8",
     install_requires=["tutor>=16.0.0,<17.0.0"],
-    entry_points={"tutor.plugin.v1": ["indigo = tutorindigo.plugin"]},
+    entry_points={"tutor.plugin.v1": ["bl = tutorbl.plugin"]},
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -56,5 +56,6 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
     ],
 )
