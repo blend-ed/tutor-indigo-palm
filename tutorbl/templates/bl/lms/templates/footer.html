@@ -31,7 +31,7 @@
         <li>Powered by:</li>
         <li>
           <a href="https://docs.tutor.overhang.io" rel="noopener" target="_blank">
-            <img src="${static.url('images/tutor-logo.png')}" alt="Runs on Tutor" width="57" />
+            <img src="${static.url('images/studio-logo.png')}" alt="Runs on Tutor" width="57" />
           </a>
         </li>
         <li>
@@ -41,10 +41,10 @@
         </li>
       </ul>
     </div>
-    {% if INDIGO_FOOTER_NAV_LINKS %}
+    {% if BL_FOOTER_NAV_LINKS %}
     <nav class="nav-colophon" aria-label="${_('About')}">
       <ol>
-          {% for link in INDIGO_FOOTER_NAV_LINKS %}
+          {% for link in BL_FOOTER_NAV_LINKS %}
           <li>
             <a href="{{ link['url'] }}">{{ link['title'] }}</a>
           </li>
@@ -95,7 +95,7 @@
           <li>Powered by:</li>
           <li>
             <a href="https://docs.tutor.overhang.io" rel="noopener" target="_blank">
-              <img src="${static.url('images/tutor-logo.png')}" alt="Runs on Tutor" width="57" />
+              <img src="${static.url('images/studio-logo.png')}" alt="Runs on Tutor" width="57" />
             </a>
           </li>
           <li>
@@ -105,10 +105,10 @@
           </li>
         </ul>
       </div>
-      {% if INDIGO_FOOTER_NAV_LINKS %}
+      {% if BL_FOOTER_NAV_LINKS %}
       <nav class="nav-colophon" aria-label="${_('About')}">
         <ol>
-            {% for link in INDIGO_FOOTER_NAV_LINKS %}
+            {% for link in BL_FOOTER_NAV_LINKS %}
             <li>
               <a href="{{ link['url'] }}">{{ link['title'] }}</a>
             </li>
