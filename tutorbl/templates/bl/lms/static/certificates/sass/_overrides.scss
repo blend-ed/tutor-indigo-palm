@@ -1,0 +1,11 @@
+.layout-accomplishment.certificate-honor {
+    .accomplishment-rendering .accomplishment-statement,
+    .accomplishment-rendering .accomplishment-signatories {
+        padding-bottom: 0;
+    }
+
+    .accomplishment-rendering .accomplishment-signatories .signatory-signature,
+    .accomplishment-rendering .accomplishment-type-symbol {
+        display: block;
+    }
+}
