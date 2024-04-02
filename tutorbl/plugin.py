@@ -119,7 +119,7 @@ hooks.Filters.ENV_PATCHES.add_items(
             "mfe-dockerfile-post-npm-install",
             """
 # using git repo of brand
-RUN npm install '@edx/brand@git+https://github.com/blend-ed/brand-bl-v2.git'
+RUN npm install '@edx/brand@git+https://github.com/blend-ed/brand-bl-v2.git#morfinversity'
         """
         ),
         (
