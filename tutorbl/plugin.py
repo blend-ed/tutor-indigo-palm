@@ -1,3 +1,7 @@
+from glob import glob
+
+import importlib_resources
+
 from __future__ import annotations
 
 import os
@@ -76,7 +80,7 @@ with open(
 
 # For each file in tutorhasura/patches,
 # apply a patch based on the file's name and contents.
-for path in glob(str(importlib_resources.files("tutorhasura") / "patches" / "*")):
+for path in glob(str(importlib_resources.files("tutorbl") / "patches" / "*")):
     with open(path, encoding="utf-8") as patch_file:
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
