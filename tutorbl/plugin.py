@@ -1,8 +1,7 @@
-from glob import glob
-
-import importlib_resources
-
 from __future__ import annotations
+
+from glob import glob
+import importlib_resources
 
 import os
 import typing as t
