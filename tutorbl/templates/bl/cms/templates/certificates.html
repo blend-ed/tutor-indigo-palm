@@ -4,7 +4,6 @@
 <%namespace name='static' file='static_content.html'/>
 <%!
 from cms.djangoapps.contentstore import utils
-from common.djangoapps.student.auth import has_studio_advanced_settings_access
 from django.utils.translation import gettext as _
 from openedx.core.djangolib.markup import HTML, Text
 from openedx.core.djangolib.js_utils import (
@@ -114,11 +113,15 @@ CMS.User.isGlobalStaff = '${is_global_staff | n, js_escaped_string}'=='True' ? t
         <h2 class="title-3">${_("Other Course Settings")}</h2>
           <nav class="nav-related" aria-label="${_('Other Course Settings')}">
             <ul>
+              % if user.is_staff or user.is_superuser:
+                <li class="nav-item"><a href="${details_url}">${_("Details & Schedule")}</a></li>
+              % endif
               <li class="nav-item"><a href="${grading_url}">${_("Grading")}</a></li>
-              % if has_studio_advanced_settings_access(request.user):
-                <li class="nav-item"><a href="${advanced_settings_url}">${_("Advanced Settings")}</a></li>
-            % endif
+              <li class="nav-item"><a href="${course_team_url}">${_("Course Team")}</a></li>
               <li class="nav-item"><a href="${utils.reverse_course_url('group_configurations_list_handler', context_course.id)}">${_("Group Configurations")}</a></li>
+              % if user.is_superuser:
+                <li class="nav-item"><a href="${advanced_settings_url}">${_("Advanced Settings")}</a></li>
+              % endif
               % if mfe_proctored_exam_settings_url:
                 <li class="nav-item"><a href="${mfe_proctored_exam_settings_url}">${_("Proctored Exam Settings")}</a></li>
               % endif
