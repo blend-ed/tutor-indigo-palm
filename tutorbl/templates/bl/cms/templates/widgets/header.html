@@ -7,7 +7,6 @@
   from django.urls import reverse
   from django.utils.translation import gettext as _
   from urllib.parse import quote_plus
-  from common.djangoapps.student.auth import has_studio_advanced_settings_access
   from cms.djangoapps.contentstore import toggles
   from cms.djangoapps.contentstore.utils import get_pages_and_resources_url
   from openedx.core.djangoapps.discussions.config.waffle import ENABLE_PAGES_AND_RESOURCES_MICROFRONTEND
@@ -104,9 +103,11 @@
             <div class="wrapper wrapper-nav-sub">
               <div class="nav-sub">
                 <ul>
-                  <!-- <li class="nav-item nav-course-settings-schedule">
+                  % if user.is_staff or user.is_superuser:
+                  <li class="nav-item nav-course-settings-schedule">
                     <a href="${settings_url}">${_("Schedule & Details")}</a>
-                  </li> -->
+                  </li>
+                  % endif 
                   <li class="nav-item nav-course-settings-grading">
                     <a href="${grading_url}">${_("Grading")}</a>
                   </li>
@@ -121,7 +122,7 @@
                     <a href="${mfe_proctored_exam_settings_url}">${_("Proctored Exam Settings")}</a>
                   </li>
                   % endif
-                  % if has_studio_advanced_settings_access(request.user):
+                  % if user.is_superuser:
                   <li class="nav-item nav-course-settings-advanced">
                     <a href="${advanced_settings_url}">${_("Advanced Settings")}</a>
                   </li>
