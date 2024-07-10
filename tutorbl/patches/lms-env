@@ -1,0 +1,22 @@
+THIRD_PARTY_AUTH_BACKENDS: ["auth0_oauth2.auth0.Auth0OAuth2", "django.contrib.auth.backends.ModelBackend"]
+
+SOCIAL_SHARING_SETTINGS :
+    CUSTOM_COURSE_URLS: true
+    CERTIFICATE_TWITTER: true
+    DASHBOARD_TWITTER: true
+    CERTIFICATE_LINKEDIN: true
+    DASHBOARD_LINKEDIN: true
+
+SOCIAL_MEDIA_FOOTER_NAMES :
+- "twitter"
+- "linkedin"
+
+SOCIAL_MEDIA_FOOTER_DISPLAY:
+    twitter:
+        title: "Twitter"
+        icon: "fa-twitter"
+        action: "Follow {platform_name} on Twitter"
+    linkedin:
+        title: "LinkedIn"
+        icon: "fa-linkedin-square"
+        action: "Follow {platform_name} on LinkedIn"

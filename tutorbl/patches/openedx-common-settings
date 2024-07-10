@@ -1,0 +1,1 @@
+INSTALLED_APPS.append('auth0_oauth2')
