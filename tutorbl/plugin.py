@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from glob import glob
+import importlib_resources
+
 import os
 import typing as t
 
@@ -72,6 +75,13 @@ with open(
     encoding="utf-8",
 ) as task_file:
     hooks.Filters.CLI_DO_INIT_TASKS.add_item(("lms", task_file.read()))
+
+
+# For each file in tutorhasura/patches,
+# apply a patch based on the file's name and contents.
+for path in glob(str(importlib_resources.files("tutorbl") / "patches" / "*")):
+    with open(path, encoding="utf-8") as patch_file:
+        hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
 
 # Override openedx & mfe docker image names
