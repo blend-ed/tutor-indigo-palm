@@ -88,6 +88,53 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                 class="long" id="course-name" readonly />
             </li>
           </ol>
+
+          % if not marketing_enabled:
+          <div class="note note-promotion note-promotion-courseURL has-actions">
+            <h3 class="title">${_("Course Summary Page")} <span class="tip">${_("(for student enrollment and access)")}</span></h3>
+            <div class="copy">
+              <%
+                link_for_about_page = lms_link_for_about_page
+              %>
+              <p><a class="link-courseURL" rel="external" href="${link_for_about_page}">${link_for_about_page}</a></p>
+            </div>
+
+            <ul class="list-actions">
+              <li class="action-item">
+                <%
+                  email_subject = urllib.quote(_("Enroll in {course_display_name}").format(
+                      course_display_name = context_course.display_name_with_default
+                  ).encode("utf-8"))
+                  email_body = urllib.quote(_('The course "{course_display_name}", provided by {platform_name}, is open for enrollment. Please navigate to this course at {link_for_about_page} to enroll.').format(
+                      course_display_name = context_course.display_name_with_default,
+                      platform_name = settings.PLATFORM_NAME,
+                      link_for_about_page = link_for_about_page
+                  ).encode("utf-8"))
+                %>
+                <a title="${_('Send a note to students via email')}"
+                    href="mailto:someone@domain.com?Subject=${email_subject}&body=${email_body}" class="action action-primary">
+                    <span class="icon fa fa-envelope-o icon-inline" aria-hidden="true"></span>${_("Invite your students")}</a>
+              </li>
+            </ul>
+          </div>
+          % endif
+
+          % if marketing_enabled:
+          <div class="notice notice-incontext notice-workflow">
+            <h3 class="title">${_("Promoting Your Course with {platform_name}").format(platform_name=settings.PLATFORM_NAME)}</h3>
+            <div class="copy">
+              <p>${_(
+                'Your course summary page will not be viewable until your course '
+                'has been announced. To provide content for the page and preview '
+                'it, follow the instructions provided by your Program Manager.')}
+                ${_(
+                'Please note that changes here may take up to a business day to '
+                'appear on your course summary page.')}
+              </p>
+            </div>
+          </div>
+          % endif
+
         </div>
         <hr class="divide" />
 
@@ -141,6 +188,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
           <hr class="divide" />
         % endif
 
+        % if user.is_superuser:
         <div class="group-settings pacing">
           <fieldset role="radiogroup">
             <legend>
@@ -327,6 +375,9 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
           </ol>
           % endif
         </div>
+        % else:
+        <p>Course pacing and schedule settings need to be set from the dashboard.</p>
+        % endif
 
         % if about_page_editable:
         <div class="group-settings course_details">
