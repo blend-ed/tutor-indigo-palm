@@ -1,0 +1,7 @@
+INSTALLED_APPS.append('auth0_oauth2')
+OPENAI_SECRET_KEY=''
+FEATURES["ENABLE_HIDE_FROM_TOC_UI"] = True
+XBLOCK_SETTINGS["ScormXBlock"] = {
+    "STORAGE_FUNC": "openedxscorm.storage.s3",
+    "S3_BUCKET_NAME": "openedx",
+}
