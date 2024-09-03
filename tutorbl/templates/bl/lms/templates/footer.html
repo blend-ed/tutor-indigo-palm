@@ -1,6 +1,7 @@
 ## mako
 <%page expression_filter="h"/>
 <%!
+  from datetime import datetime
   from django.urls import reverse
   from django.utils.translation import gettext as _
   from lms.djangoapps.branding.api import get_footer
@@ -30,8 +31,8 @@
       <ul class="logo-list">
         <li>Powered by:</li>
         <li>
-          <a href="https://docs.tutor.overhang.io" rel="noopener" target="_blank">
-            <img src="${static.url('images/studio-logo.png')}" alt="Runs on Tutor" width="57" />
+          <a href="https://docs.tutor.edly.io" rel="noopener" target="_blank">
+            <img src="{{ BL_CDN_URL }}" alt="Runs on Tutor" width="57" />
           </a>
         </li>
         <li>
@@ -52,10 +53,10 @@
       </ol>
     </nav>
   </div>
-  <span class="copyright-site">Copyrights ©2023. All Rights Reserved.</span>
+  <span class="copyright-site">Copyrights ©${datetime.now().year}. All Rights Reserved.</span>
   % endif
     <div class="colophon">
-     
+
       {% endif %}
       % if context.get('include_language_selector', footer_language_selector_is_enabled()):
           <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
@@ -95,7 +96,7 @@
           <li>Powered by:</li>
           <li>
             <a href="https://docs.tutor.overhang.io" rel="noopener" target="_blank">
-              <img src="${static.url('images/studio-logo.png')}" alt="Runs on Tutor" width="57" />
+              <img src="{{ BL_CDN_URL }}" alt="Runs on Tutor" width="57" />
             </a>
           </li>
           <li>
@@ -116,10 +117,10 @@
         </ol>
       </nav>
     </div>
-    <span class="copyright-site">Copyrights ©2023. All Rights Reserved.</span>
+    <span class="copyright-site">Copyrights ©${datetime.now().year}. All Rights Reserved.</span>
     % endif
       <div class="colophon">
-       
+
         {% endif %}
         % if context.get('include_language_selector', footer_language_selector_is_enabled()):
             <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
