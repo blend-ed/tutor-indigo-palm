@@ -43,7 +43,7 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
                 "url": "https://github.com/blend-ed/tutor-indigo-palm.git",
             },
         ],
-        "BL_CDN_URL": "https://blend-ed-public-asset-bak.s3.ap-south-1.amazonaws.com/demo/logo.png",
+        "CDN_URL": "https://blend-ed-public-asset-bak.s3.ap-south-1.amazonaws.com/demo/logo.png",
     },
     "unique": {},
     "overrides": {},
